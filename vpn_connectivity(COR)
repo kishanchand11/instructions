@@ -1,0 +1,46 @@
+in north virginia (eg: 10.0.0.0/16)
+
+step1:
+
+create vpc
+create subnet
+cretae igw
+rename route table
+In route table add route to its igw 0.0.0.0 ----- igw
+ensure the rt table is associated with default rt table
+
+
+step2 
+  
+create sg group ---inbound -ssh-22-0.0.0.0 ---outbound ---LL
+LAUNCH VPC WITH PUBLIC IP
+ASSOC SG WITH EC2
+
+step3
+  
+create tg---asn-4200000000 check info
+create tg attachment and add vpc as attachment
+
+  only in one vpc create tgw attach and add as peering and related info
+  
+obsrve (tgw rt tables) , routes are propogated
+
+
+step 4
+  
+NV sg modify inbound telenet cusotm tcp port 23 ------ opp vpc cidr (eg 198.0..0.0/16)
+
+step5
+  
+nv - modify vpc route table
+CIDR of opp vpc to transit gateway-----(198.0.0.0/16 ----- transit gateway)
+same viceversa in other region......................
+
+for both
+  create static route under tgw attachment(nc)
+    under routes section
+          create static route
+  opp vpc cidr (nv) -------- attach as peering
+
+  same vice versa in NV by adding nc cidr as peering
+  
