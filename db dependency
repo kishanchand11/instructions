@@ -1,0 +1,5 @@
+sudo add-apt-repository -y ppa:ondrej/php
+
+sudo apt install php5.6 mysql-client php5.6-mysqli
+
+mysql -h endpoint -u admin -p password
